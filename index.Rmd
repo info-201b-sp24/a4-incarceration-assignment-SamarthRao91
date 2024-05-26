@@ -7,6 +7,8 @@ output: html_document
 
 An introduction of the problem domain and a description of the variable(s) you are choosing to analyze (and why!)
 
+For this assignment, I wanted to analyze the relationship between minorities and white people incarcerated from the late 1900s to today in rural vs. urban cities in Washington State. Even before analyzing the data, we know that in the United States, black people have the highest rate of incarceration.  However, I wanted to measure the magnitude of this data over the years in rural and urban cities.  There are still many that believe that racism is a thing of the past, or a nonproblem in current days, especially in a majorly democratic state such as Washington. We also tend to hold the thought as a society that many urban big cities like Seattle, and Bellevue are magnitude better than rural areas such as Eastern Washington.  Using this data, I wanted to combine these two assumptions and understand how these relationships have changed throughout the years in different environments.
+
 ### Summary Information
 
 Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
