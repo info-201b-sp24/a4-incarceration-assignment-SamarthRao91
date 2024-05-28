@@ -1,0 +1,336 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={A3: Incarceration},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{A3: Incarceration}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\hypertarget{authors}{%
+\subsubsection{Authors}\label{authors}}
+
+Samarth Rao
+
+\hypertarget{introduction}{%
+\subsubsection{Introduction}\label{introduction}}
+
+For this assignment, I wanted to analyze the relationship between
+minorities and white people incarcerated from the late 1900s and how
+this relationship and disparity changes across different locations and
+city types across the U.S and also in Washington state specifically.
+Even before analyzing the data, we know that in the United States, black
+people have the highest rate of incarceration due to racism in our
+system. However, I wanted to measure the magnitude of this data over the
+years and how it can be affected across location and different
+magnitudes of cities. We tend to think that many urban cities, like
+those in Washington (Seattle, Bellevue) will be better then more rural
+towns. Analyzing this data, can give us clues to start uncovering where
+and more importantly what is causing these disparities in different
+places and test our assumptions. If we understand where to look to see
+these disparities, where racism could be the prevalent cause in our
+problematic system, we then have a huge lead as to where to look further
+to uncover more and fix the underlying issues. That is why I chose to
+analyze how the location and urbanicity of counties and states can
+affect the difference in blacks and white's incarcerated over the united
+states
+
+This leads us to our big question:
+
+*\textbf{Q: How the prevalence of racism in our prison systems has
+changed across differnet locations and sizes of cities in the United
+States, as well as in Washington State specifically.}
+
+\hypertarget{summary}{%
+\subsubsection{Summary}\label{summary}}
+
+To gain an understanding of our question we can look at some key
+statistics that give us an insight and sneak peek of our data. Now let's
+look through some of these values. We will first start off by looking at
+the national datapoints. If we confine our data to the most recent date,
+through some analysis we see that \textbf{LA is the state with the
+highest difference} between black people and white people incarcerated,
+while \textbf{KY has the smallest difference} out all U.S. states. To
+look further into our question we can look specifically into
+\textbf{Washington state}, to get more local values, and also explore
+the impact of a county's urbanicity. Through further analysis we see
+that \textbf{Cook County is the urban county with the highest
+difference} of black and white people with a value of 3781.While in
+rural counties, we have \textbf{East Baton Rouge Parish being the rural
+county with the highest difference} with a value of 773. Obviously these
+data points don't represent the whole story and are just some specific
+data points, but it gives a good sneak peak at the analysis we preformed
+on this dataset.
+
+\hypertarget{the-dataset}{%
+\subsubsection{The Dataset}\label{the-dataset}}
+
+Who collected the data?
+
+\begin{itemize}
+\tightlist
+\item
+  The data was collected by VERA, Institute of Justice.
+\end{itemize}
+
+How was the data collected or generated?
+
+\begin{itemize}
+\tightlist
+\item
+  The data was collected by combining multiple sources of information
+  that reports data from U.S prisons and jails. These include but are
+  not limited to\ldots{} Census of Jails, FBI Uniform Crime Reporting
+  Program, Center of Disease Control and more. These organizations
+  report data from jails and prisons in the U.S and are combined to make
+  this dataset.
+\end{itemize}
+
+Why was the data collected?
+
+\begin{itemize}
+\tightlist
+\item
+  There are a multitude of reasons that this data set could have been
+  collected for. But the main reason to allow people to make analysis,
+  and conclusions and undercover relationships and data, that be used to
+  help bring justice and fairness to our incarceration system in the
+  United States
+\end{itemize}
+
+How many observations (rows) are in your data?
+
+\begin{itemize}
+\tightlist
+\item
+  The data-set includes prison and jail data from Washington State. It
+  contains 1131 rows.
+\end{itemize}
+
+How many features (columns) are in the data?
+
+\begin{itemize}
+\tightlist
+\item
+  There are 23 features in this data-set.
+\end{itemize}
+
+What, if any, ethical questions or questions of power do you need to
+consider when working with this data?
+
+\begin{itemize}
+\tightlist
+\item
+  When working with this data, we need to understand that this data
+  represents real people. And us handling this data, and analyzing and
+  making conclusions based on this data, affects and tells a story about
+  people's lives. So we need to make sure we are not falsely
+  representing these people and misusing the data, and out power with
+  the use of the data.
+\end{itemize}
+
+What are possible limitations or problems with this data?
+
+\begin{itemize}
+\tightlist
+\item
+  There are many possible limitations with this data that can affect our
+  data. This dataset has many missing NA or 0 values, which can severely
+  limit what we can analyze with this data, as there are data points
+  that we need to include and can skew the data. Our data also has a
+  problem: we need to know the reason behind these incarcerations. If we
+  had a feature that showed us the reason for incarceration then we
+  could make a more concrete analysis and further strengthen our claims
+  by tying this in. We also have some inconsistencies in the data that
+  in some of the columns make the different rates not add up to the
+  total properly. This is concerning the whole population or total jail
+  population. A small limitation but a limitation nonetheless is the
+  fact that they only gave us the state abbreviations in the state
+  feature. This made it a little harder to make maps and combine them
+  with locations to analyze the data per location. Providing both would
+  allow us more options and make it easier to relate to
+  multiple-location data.
+\end{itemize}
+
+\hypertarget{trends-over-time-chart}{%
+\subsubsection{Trends Over Time Chart}\label{trends-over-time-chart}}
+
+\includegraphics{index_files/figure-latex/plot1-1.pdf}
+
+\hypertarget{purpose}{%
+\paragraph{Purpose}\label{purpose}}
+
+By showing this chart we can see how the higher disproportionate rate of
+blacks arrested over white has and have been changing over the years in
+different city environments and populations. It lets us see the trend of
+this difference over the years behaves differently in the average urban
+city and the average rural cities in Washington State. From this chart
+we can analyze the relationship between the red and blue lines to see
+when and where the disproportionate rates of blacks incarcerated are
+more common in Washington State.
+
+\emph{Note: We went with the average to combat the fact that we had more
+rural data entries than urban data entries.}
+
+\hypertarget{insights}{%
+\paragraph{Insights}\label{insights}}
+
+\begin{itemize}
+\item
+  Because we defined the difference as Blacks In Jail - Whites In Jail,
+  a lower number on the y-axis means that there were not that many more
+  blacks in jail than whites, but a higher number tells us that there
+  were significantly more blacks than whites in jails. A negative number
+  means that there are more white people in jail than black people.
+\item
+  At a first glance of the graph we see a pretty drastic split between
+  the {rural} and {urban} lines after the intial values.
+\item
+  The blue line which represents the difference in the amount of blacks
+  minus white's incarcerated in the average urban city in Washington,
+  start's to ramp up and increase, while than the red line which
+  represents the same relationship in rural cities in Washington,
+  decreases in the negatives after the constant line. This portrays
+  after we get some values in the average Washington state, urban
+  city,there is an immediate disparity between the number of black
+  incarcerated opposed to whites, with more black people than white
+  people arrested in urban cities.
+\item
+  We see the red rural line immidieatly go into the negatives with a
+  downward slope and despite a few spikes up and down, never leaves the
+  negatives.Our red line on the other hand has a different journey.
+  After the initial start it has a few significant spikes up for
+  throughout a couple years before settling back, but then settling down
+  into a downward growth near the end,still staying in the positives
+  though.
+\item
+  The lines unique behavior shows how the rate of black people
+  incarcerated has been much higher in the average urban city over the
+  years, while the red line seems to show that on average rural city
+  there are more white people in jail then blacks. Over the years this
+  number seems to have gone down for urban cities, indicating that this
+  disparity is decreasing in Washington, but we still see that the
+  average urban city in Washington State has a higher rate of black
+  people in jail than white people.
+\item
+  We know from before analyzing the data that many blacks are
+  incarcerated at a higher rate than whites to prevalent racism and
+  through this analysis we can understand the magnitude of this
+  disparity in urban cities, and how there are more white people in jail
+  in rural cities, and how this disparity is more prevelant in the
+  bigger urban and suburban cities of Washington State.
+\end{itemize}
+
+\hypertarget{variable-comparison-chart}{%
+\subsubsection{Variable Comparison
+Chart}\label{variable-comparison-chart}}
+
+\hypertarget{insights-1}{%
+\paragraph{Insights}\label{insights-1}}
+
+\hypertarget{purpose-1}{%
+\paragraph{Purpose}\label{purpose-1}}
+
+\hypertarget{map}{%
+\subsubsection{Map}\label{map}}
+
+\includegraphics{index_files/figure-latex/heat_map-1.pdf}
+
+\hypertarget{purpose-2}{%
+\paragraph{Purpose}\label{purpose-2}}
+
+If we remember back to the beginning of the report, our main question
+that we want to answer is understanding the magnitude of this disparity
+of more black people incarcerated and how it is related to the location
+and urbanity of the location. This choropleth map helps us answer the
+first part of this question. We can understand how the difference
+changes across locations and more specifically different states. We can
+see how states that are darker have a higher value for the difference
+than the lighter states. This allows us to make an analysis and clearly
+see where racism could be prevalent in our incarceration system.
+
+\hypertarget{insights-2}{%
+\paragraph{Insights}\label{insights-2}}
+
+\begin{itemize}
+\item
+  From this chart we do see an intersting pattern with the coloration of
+  the states.
+\item
+  We can see how the states as we go towards the east, and upper mideast
+  start to get darker. The states on the west and midwest do have a few
+  darker states, and semi dark states, but we see this trend more on the
+  eastern side of the map.
+\item
+  We can see in what cluster of states near the southeast have a higher
+  disparity between balcks in jail with a lot more black people in jail.
+  If we wanted to see what was causing the disparity in our system then
+  we could start by looking at the system in those areas.
+\end{itemize}
+
+\end{document}

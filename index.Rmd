@@ -1,73 +1,124 @@
 ---
-title: "A3: Incarceration"
-output: html_document
+title: 'A3: Incarceration'
+authour: Samarth Rao
+output:
+  html_document: default
+  pdf_document: default
 ---
+
+### Authors
+
+Samarth Rao
+
+raosa\@uw.edu
 
 ### Introduction
 
-An introduction of the problem domain and a description of the variable(s) you are choosing to analyze (and why!)
+For this assignment, I wanted to analyze the relationship between minorities and white people incarcerated from the late 1900s and how this relationship and disparity changes across different locations and city types across the U.S and also in Washington state specifically. Even before analyzing the data, we know that in the United States, black people have the highest rate of incarceration due to racism in our system. However, I wanted to measure the magnitude of this data over the years and how it can be affected across location and different magnitudes of cities. We tend to think that many urban cities, like those in Washington (Seattle, Bellevue) will be better then more rural towns. Analyzing this data, can give us clues to start uncovering where and more importantly what is causing these disparities in different places and test our assumptions. If we understand where to look to see these disparities, where racism could be the prevalent cause in our problematic system, we then have a huge lead as to where to look further to uncover more and fix the underlying issues. That is why I chose to analyze how the location and urbanicity of counties and states can affect the difference in blacks and white's incarcerated over the united states
 
-For this assignment, I wanted to analyze the relationship between minorities and white people incarcerated from the late 1900s to today in rural vs. urban cities in Washington State. Even before analyzing the data, we know that in the United States, black people have the highest rate of incarceration.  However, I wanted to measure the magnitude of this data over the years in rural and urban cities.  There are still many that believe that racism is a thing of the past, or a nonproblem in current days, especially in a majorly democratic state such as Washington. We also tend to hold the thought as a society that many urban big cities like Seattle, and Bellevue are magnitude better than rural areas such as Eastern Washington.  Using this data, I wanted to combine these two assumptions and understand how these relationships have changed throughout the years in different environments.
+This leads us to our big question:
 
-### Summary Information
+**Q: How the prevalence of racism in our prison systems has changed across different locations and sizes of cities in the United States, as well as in Washington State specifically.**
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
+```{r summ, echo=FALSE, message=FALSE, warning=FALSE}
+source("summary.R")
+```
 
-These will likely be calculated using your DPLYR skills, answering questions such as: 
+### Summary
 
-- What is the average value of my variable across all the counties (in the current year)?
-- Where is my variable the highest / lowest?
-- How much has my variable change over the last N years?
-
-Feel free to calculate and report values that you find relevant. Again, remember that the purpose is to think about how these measure of incarceration vary by race.
+To gain an understanding of our question we can look at some key statistics that give us an insight and sneak peek of our data. Now let's look through some of these values. We will first start off by looking at the national datapoints. If we confine our data to the most recent date, through some analysis we see that **`r state_with_highest_diff` is the state with the highest difference** between black people and white people incarcerated, while **`r state_with_lowest_diff` has the smallest difference** out all U.S. states. To look further into our question we can look specifically into **Washington state**, to get more local values, and also explore the impact of a county's urbanicity. Through further analysis we see that **`r highest_diff_urban` is the urban county with the highest difference** of black and white people with a value of `r highest_diff_urban_val`.While in rural counties, we have **`r highest_diff_rural` being the rural county with the highest difference** with a value of `r highest_diff_rural_val`. Obviously these data points don't represent the whole story and are just some specific data points, but it gives a good sneak peak at the analysis we preformed on this data set.
 
 ### The Dataset
 
-Who collected the data?  
-How was the data collected or generated?  
-Why was the data collected?  
-How many observations (rows) are in your data?  
-How many features (columns) are in the data?  
-What, if any, ethical questions or questions of power do you need to consider when working with this data?  
-What are possible limitations or problems with this data?   (at least 200 words)
+Who collected the data?
 
+-   The data was collected by VERA, Institute of Justice.
+
+How was the data collected or generated?
+
+-   The data was collected by combining multiple sources of information that reports data from U.S prisons and jails. These include but are not limited to... Census of Jails, FBI Uniform Crime Reporting Program, Center of Disease Control and more. These organizations report data from jails and prisons in the U.S and are combined to make this data set.
+
+Why was the data collected?
+
+-   There are a multitude of reasons that this data set could have been collected for. But the main reason to allow people to make analysis, and conclusions and undercover relationships and data, that be used to help bring justice and fairness to our incarceration system in the United States
+
+How many observations (rows) are in your data?
+
+-   The data-set includes prison and jail data from Washington State. It contains 1131 rows.
+
+How many features (columns) are in the data?
+
+-   There are 23 features in this data-set.
+
+What, if any, ethical questions or questions of power do you need to consider when working with this data?
+
+-   When working with this data, we need to understand that this data represents real people. And us handling this data, and analyzing and making conclusions based on this data, affects and tells a story about people's lives. So we need to make sure we are not falsely representing these people and misusing the data, and out power with the use of the data.
+
+What are possible limitations or problems with this data?
+
+-   There are many possible limitations with this data that can affect our data. This dataset has many missing NA or 0 values, which can severely limit what we can analyze with this data, as there are data points that we need to include and can skew the data. Our data also has a problem: we need to know the reason behind these incarcerations. If we had a feature that showed us the reason for incarceration then we could make a more concrete analysis and further strengthen our claims by tying this in. We also have some inconsistencies in the data that in some of the columns make the different rates not add up to the total properly. This is concerning the whole population or total jail population. A small limitation but a limitation nonetheless is the fact that they only gave us the state abbreviations in the state feature. This made it a little harder to make maps and combine them with locations to analyze the data per location. Providing both would allow us more options and make it easier to relate to multiple-location data.
 
 ### Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The first chart that you will create and include will show the trend over time of your variable/topic. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - This may mean showing the same measure for different locations or different racial groups. Think carefully about a meaningful comparison of locations (e.g., the top 10 counties in a state, top 10 states, etc.)
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart1_example.R")}
+```{r plot1, echo=FALSE, message=FALSE, warning=FALSE}
+source("chart1.R")
+plot(chart_1)
 ```
+
+#### Purpose
+
+By showing this chart we can see how the higher disproportionate rate of blacks arrested over white has and have been changing over the years in different city environments and populations. It lets us see the trend of this difference over the years behaves differently in the average urban city and the average rural cities in Washington State. From this chart we can analyze the relationship between the red and blue lines to see when and where the disproportionate rates of blacks incarcerated are more common in Washington State.
+
+*Note: We went with the average to combat the fact that we had more rural data entries than urban data entries.*
+
+#### Insights
+
+-   Because we defined the difference as Blacks In Jail - Whites In Jail, a lower number on the y-axis means that there were not that many more blacks in jail than whites, but a higher number tells us that there were significantly more blacks than whites in jails. A negative number means that there are more white people in jail than black people.
+
+-   At a first glance of the graph we see a pretty drastic split between the [rural]{style="color:red"} and [urban]{style="color:blue"} lines after the initial values.
+
+-   The blue line which represents the difference in the amount of blacks minus white's incarcerated in the average urban city in Washington, start's to ramp up and increase, while than the red line which represents the same relationship in rural cities in Washington, decreases in the negatives after the constant line. This portrays after we get some values in the average Washington state, urban city,there is an immediate disparity between the number of black incarcerated opposed to whites, with more black people than white people arrested in urban cities.
+
+-   We see the red rural line immediately go into the negatives with a downward slope and despite a few spikes up and down, never leaves the negatives.Our red line on the other hand has a different journey. After the initial start it has a few significant spikes up for throughout a couple years before settling back, but then settling down into a downward growth near the end,still staying in the positives though.
+
+-   The lines unique behavior shows how the rate of black people incarcerated has been much higher in the average urban city over the years, while the red line seems to show that on average rural city there are more white people in jail then blacks. Over the years this number seems to have gone down for urban cities, indicating that this disparity is decreasing in Washington, but we still see that the average urban city in Washington State has a higher rate of black people in jail than white people.
+
+-   We know from before analyzing the data that many blacks are incarcerated at a higher rate than whites to prevalent racism and through this analysis we can understand the magnitude of this disparity in urban cities, and how there are more white people in jail in rural cities, and how this disparity is more prevalent in the bigger urban and suburban cities of Washington State.
 
 ### Variable Comparison Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+```{r chart2, echo = FALSE,fig.width = 14, warning = FALSE, message = FALSE}
+source("chart2.R")
+plot(chart_2)
+```
 
-The second chart that you will create and include will show how two different (continuous) variables are related to one another. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+#### Purpose
 
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- If you choose to add a color encoding (not required), you need a legend for your different color and a clear legend title
+This graphs shows us the direct relationship between the two difference variables in urban and rural counties of Washington State. While we do show their relationship over time in the above graph, here we show their direct relationship between each other. As we saw in the above graph, over the years the difference in incarceration rates increases in the avg Washington urban town, and decreases in the avg Washington rural town. As both these trends are in Washington, they have the chance of having a close relation. This is what we want to undercover in this graph. If there is correlation between the two trends.
+
+#### Insights
+
+- Here we do see a relationship between the lines, as the trend line that would fit this graph, would have an upwards (positive) slope. This means that there is a positive relation between the two axis.
+
+- If we decipher this trend and apply it to the data, it means we see a positive trend as the disparity in incarceration between black people and white people go up in Washington's urban cities, then they also tend to go up in Washington's rural cities.
+
+- While we do see with the graph we made, and it is a suitable conclusion, we run into another one of the limits with only using the data-set. Without further analysis into this topic, understanding more and looking at more features in-depth we cannot tell if the correlation is caused by the increase in urban disparity, or if it is just a coiencedence in the data-set we are looking at. 
 
 ### Map
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+```{r heat_map, echo = FALSE,fig.width = 14, warning = FALSE, message = FALSE}
+source("map.R")
+plot(differnce_heat_map)
+```
 
-The last chart that you will create and include will show how a variable is distributed geographically. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+#### Purpose
 
-- Your map needs a title
-- Your color scale needs a legend with a clear label
-- Use a map based coordinate system to set the aspect ratio of your map
+If we remember back to the beginning of the report, our main question that we want to answer is understanding the magnitude of this disparity of more black people incarcerated and how it is related to the location and urbanity of the location. This choropleth map helps us answer the first part of this question. We can understand how the difference changes across locations and more specifically different states. We can see how states that are darker have a higher value for the difference than the lighter states. This allows us to make an analysis and clearly see where racism could be prevalent in our incarceration system.
 
+#### Insights
+
+-   From this chart we do see an interesting pattern with the coloration of the states.
+
+-   We can see how the states as we go towards the east, and upper mid east start to get darker. The states on the west and mid west do have a few darker states, and semi dark states, but we see this trend more on the eastern side of the map. On the western side of the map and southwest we see more lighter colors that represent negative numbers and show how those states have a higher amount of white people in jail than black people.
+
+-   We can see in what cluster of states near the southeast have a higher disparity between balcks in jail with a lot more black people in jail. If we wanted to see what was causing the disparity in our system then we could start by looking at the system in those areas.
